@@ -1,0 +1,3 @@
+class Library < Thor
+  
+end
