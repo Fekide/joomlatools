@@ -41,6 +41,7 @@ class JoomlaTools < Thor
       @version = "1.0"
       @author = "AUTHOR"
       @description = "DESCRIPTION"
+      @creation_date = "#{Date::MONTHNAMES[Time.now.month]} #{Time.now.year}"
 
       if(type == "module")
         dir_name = "mod_#{name}"
@@ -54,6 +55,17 @@ class JoomlaTools < Thor
         template("templates/module/mod_name.erb","#{dir_name}/mod_#{name}.php")
         template("templates/module/helper.erb","#{dir_name}/helper.php")
         template("templates/module/tmpl/default.erb","#{dir_name}/tmpl/default.php")
+
+      elsif(type == "plugin")
+
+        dir_name = "plg_#{name}"
+
+        # create directories
+        empty_directory(dir_name)
+
+        # create files
+        
+
       end
 
     end
