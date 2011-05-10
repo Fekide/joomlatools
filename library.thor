@@ -1,3 +1,0 @@
-class Library < Thor
-  
-end

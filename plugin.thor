@@ -1,3 +1,0 @@
-class Plugin < Thor
-  
-end

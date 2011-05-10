@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6.0" method="upgrade">
+  <name><%= @name %></name>
+  <author><%= @author %></author>
+  <version><%= @version %></version>
+  <description><%= @description %></description>
+  <files>
+    <filename>mod_<%= @name %>.xml</filename>
+    <filename module="mod_<%= @name %>">mod_<%= @name %>.php</filename>
+    <filename>helper.php</filename>
+    <filename>tmpl/default.php</filename>
+  </files>
+  <params>
+  </params>
+</extension>
