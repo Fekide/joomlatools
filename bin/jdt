@@ -1,0 +1,4 @@
+require 'thor'
+require '../lib/status.thor'
+
+JoomlaTools.start

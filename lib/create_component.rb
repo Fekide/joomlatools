@@ -5,6 +5,8 @@ class Component < Thor
     File.dirname(__FILE__)
   end
 
+  # option -v version
+  # option
   desc "create COM_NAME", "create new component"
   def create(name)
 
@@ -47,13 +49,6 @@ class Component < Thor
     empty_directory("#{admin_dir}/language/")
     empty_directory("#{admin_dir}/sql/")
     empty_directory("#{admin_dir}/sql/updates/")
-  end
-
-  desc "model MODEL_NAME", "create new model in current component"
-  def model(name)
-
-    # TODO
-
   end
 
 end

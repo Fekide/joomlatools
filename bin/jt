@@ -1,4 +1,0 @@
-require 'thor'
-require '../lib/joomla_tools.thor'
-
-JoomlaTools.start

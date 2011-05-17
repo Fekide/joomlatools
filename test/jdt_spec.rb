@@ -1,5 +1,5 @@
 require "rspec"
-require "../lib/joomla_tools.thor"
+require "../lib/status.thor"
 
 describe JoomlaTools do
 

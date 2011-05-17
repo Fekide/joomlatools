@@ -1,7 +1,7 @@
 require 'thor'
 require 'nokogiri'
 
-class JoomlaTools < Thor
+class JDT < Thor
   include Thor::Actions
 
   desc "status","shows name and type of joomla element"
@@ -82,5 +82,8 @@ class JoomlaTools < Thor
 end
 
 module Joomla
-  TYPES = ["component","module","plugin","template","library"]
+  module Extension
+    TYPES = ["component","module","plugin","template","library"]
+  end
+  
 end
