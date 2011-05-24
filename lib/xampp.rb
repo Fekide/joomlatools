@@ -1,9 +1,40 @@
-module Config
-  BROWSER = "chrome"
-  PATH = "c:/xampp"
-end
+require 'thor'
 
 class Xampp < Thor
+  include Thor::Actions
+
+  desc "configure","configure server settings"
+  def configure
+
+    # TODO change to extension root directory
+    config_file = ".jdt/config.xml"
+
+    if(!File.exists?(config_file))
+      # create config file
+      create_file(config_file,"configuration file")
+    end
+
+    # get xampp path
+    # TODO what is returned when nothing is entered
+    xampp_path = ask("Enter fully qualified xampp path (default: C:\\xampp):")
+
+    # set xampp path default value if it has not been set
+    if(xampp_path == "")
+      xampp_path = "c:\\xampp"
+    end
+    
+    # store information
+    file = File.open(config_file,"rw")
+    Nokogiri::XML(file)
+    
+    file.close
+
+
+
+      "xampp_path: #{xampp_path}"
+
+  end
+
 
   desc "start_server","start apache and mysql server"
   def start_server
@@ -36,6 +67,7 @@ class Xampp < Thor
     puts "Path is #{Config::PATH}"
   end
 
+=begin
   desc "phpmyadmin","open phpmyadmin in browser"
   def phpmyadmin
     system("#{Config::BROWSER} http://localhost/phpMyAdmin")
@@ -45,5 +77,6 @@ class Xampp < Thor
   def web
     system("#{Config::BROWSER} http://localhost/")
   end
+=end
 
 end

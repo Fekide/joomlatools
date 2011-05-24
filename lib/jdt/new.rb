@@ -4,29 +4,6 @@ require 'nokogiri'
 class JDT < Thor
   include Thor::Actions
 
-  desc "status","shows name and type of joomla element"
-  def status
-
-    # search xml file of current element
-    
-
-    if(element?)
-      name = "name"
-
-      if(component?)
-        type = "component"
-      elsif(module?)
-        type = "module"
-      end
-
-      say("You are currently editing the #{type} #{name}")
-    else
-      say("No Joomla element found along path hierarchy.")
-    end
-
-
-  end
-
   desc "new TYPE NAME","creates a stub of TYPE with NAME"
   def new(type, name)
 
@@ -168,20 +145,6 @@ class JDT < Thor
 
   end
 
-
-
-  # include templates directory
-  def self.source_root
-    File.dirname(__FILE__)
-  end
-
 end
 
-module Joomla
-  module Extension
-    TYPES = ["component","module","plugin","template","library"]
-  end
-
-end
-
-#methode zum auto erstellen der index.html in allen unterordnern
+# TODO methode zum auto erstellen der index.html in allen unterordnern

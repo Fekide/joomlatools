@@ -1,4 +1,4 @@
 require 'thor'
-require '../lib/status.thor'
+require '../lib/jdt'
 
-JoomlaTools.start
+JDT.start()
