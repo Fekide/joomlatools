@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+
+	<name><%= @name %></name>
+	<creationDate><%= @creation_date %></creationDate>
+	<author><%= @author %></author>
+	<version><%= @version %></version>
+	<description><%= @description %></description>
+
+    <!-- Site Main File Copy Section -->
+    <files folder="site">
+        <filename>com_<%= @name %>.php</filename>
+        <filename>controller.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>language</folder>
+    </files>
+
+
+    <administration>
+
+        <!-- Admin Main File Copy Section -->
+        <files folder="admin">
+            <!-- Admin Main File Copy Section -->
+            <filename>config.xml</filename>
+            <filename>access.xml</filename>
+
+            <filename><%= @name %>.php</filename>
+            <filename>controller.php</filename>
+            <!-- SQL files section -->
+            <folder>sql</folder>
+            <!-- tables files section -->
+            <folder>tables</folder>
+            <!-- models files section -->
+            <folder>models</folder>
+            <!-- views files section -->
+            <folder>views</folder>
+            <!-- controllers files section -->
+            <folder>controllers</folder>
+            <!-- helpers files section -->
+            <folder>helpers</folder>
+        </files>
+    </administration>
+
+</extension>
