@@ -146,5 +146,3 @@ class JDT < Thor
   end
 
 end
-
-# TODO methode zum auto erstellen der index.html in allen unterordnern
