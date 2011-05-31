@@ -55,24 +55,19 @@ class JDT < Thor
         # site
         site_dir = "#{dir_name}/site"
         empty_directory("#{site_dir}")
-        template('templates/component/index.erb',"#{site_dir}/index.html")
         template('templates/component/site/com_name.erb', "#{site_dir}/com_#{name}.php")
         template('templates/component/site/controller.erb', "#{site_dir}/controller.php")
 
         #site view
         empty_directory("#{site_dir}/views/")
-        template('templates/component/index.erb',"#{site_dir}/views/index.html")
         empty_directory("#{site_dir}/views/#{view_name}")
-        template('templates/component/index.erb',"#{site_dir}/views/#{view_name}/index.html")
         template('templates/component/site/views/view_name/view.html.erb', "#{site_dir}/views/#{view_name}/view.html.php")
         empty_directory("#{site_dir}/views/#{view_name}/tmpl")
-        template('templates/component/index.erb',"#{site_dir}/views/#{view_name}/tmpl/index.html")
         template('templates/component/site/views/view_name/tmpl/default_php.erb', "#{site_dir}/views/#{view_name}/tmpl/default.php")
         template('templates/component/site/views/view_name/tmpl/default_xml.erb', "#{site_dir}/views/#{view_name}/tmpl/default.xml")
 
         #site models
         empty_directory("#{site_dir}/models/")
-        template('templates/component/index.erb',"#{site_dir}/models/index.html")
         template('templates/component/site/models/com_model_name.erb', "#{site_dir}/models/com_#{name}.php")
 
         #site controllers
@@ -80,14 +75,12 @@ class JDT < Thor
 
         #site language
         empty_directory("#{site_dir}/language/")
-        template('templates/component/index.erb',"#{site_dir}/language/index.html")
         empty_directory("#{site_dir}/language/en-GB/")
         empty_directory("#{site_dir}/language/de-DE/")
 
         # admin
         admin_dir = "#{dir_name}/admin"
         empty_directory("#{admin_dir}")
-        template('templates/component/index.erb',"#{admin_dir}/index.html")
         template('templates/component/admin/access.erb',"#{admin_dir}/access.xml")
         template('templates/component/admin/config.erb',"#{admin_dir}/config.xml")
         template('templates/component/admin/com_name.erb', "#{admin_dir}/com_#{name}.php")
@@ -95,34 +88,25 @@ class JDT < Thor
 
         #admin views
         empty_directory("#{admin_dir}/views/")
-        template('templates/component/index.erb',"#{admin_dir}/views/index.html")
         empty_directory("#{admin_dir}/views/#{view_name}")
-        template('templates/component/index.erb',"#{admin_dir}/views/#{view_name}/index.html")
         template('templates/component/admin/views/view_name/view.html.erb', "#{admin_dir}/views/#{view_name}/view.html.php")
         empty_directory("#{admin_dir}/views/#{view_name}/tmpl")
-        template('templates/component/index.erb',"#{admin_dir}/views/#{view_name}/tmpl/index.html")
         template('templates/component/admin/views/view_name/tmpl/default.erb', "#{admin_dir}/views/#{view_name}/tmpl/default.php")
 
         #admin models
         empty_directory("#{admin_dir}/models/")
-        template('templates/component/index.erb',"#{admin_dir}/models/index.html")
         empty_directory("#{admin_dir}/models/forms/")
-        template('templates/component/index.erb',"#{admin_dir}/models/forms/index.html")
         empty_directory("#{admin_dir}/models/rules/")
-        template('templates/component/index.erb',"#{admin_dir}/models/rules/index.html")
         empty_directory("#{admin_dir}/models/fields/")
-        template('templates/component/index.erb',"#{admin_dir}/models/fields/index.html")
 
         #admin controllers
         empty_directory("#{admin_dir}/controllers/")
 
         #admin helpers
         empty_directory("#{admin_dir}/helpers/")
-        template('templates/component/index.erb',"#{admin_dir}/helpers/index.html")
 
         #admin tables
         empty_directory("#{admin_dir}/tables/")
-        template('templates/component/index.erb',"#{admin_dir}/tables/index.html")
 
         #admin language
         empty_directory("#{admin_dir}/language/")
@@ -131,14 +115,18 @@ class JDT < Thor
 
         #admin sql
         empty_directory("#{admin_dir}/sql/")
-        template('templates/component/index.erb',"#{admin_dir}/sql/index.html")
         empty_directory("#{admin_dir}/sql/updates/")
-        template('templates/component/index.erb',"#{admin_dir}/sql/updates/index.html")
 
       elsif(type == "library")
+        dir_name = "lib_#{name}"
 
       elsif(type == "template")
+        dir_name = "tem_#{name}"
 
+        #create empty directory
+        empty_directory("#{dir_name}/css")
+        empty_directory("#{dir_name}/html")
+        empty_directory("#{dir_name}/images")
       end
 
     end
