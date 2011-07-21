@@ -27,7 +27,7 @@ class JDT < Thor
 
   desc "help [zos] [path] [dir]", "help method for a recursive run through the directory tree;
                                 needs the variable for the ZipFile, the current path and
-                                the directory structur in the zip file (first call = \"\")"
+                                the directory structure in the zip file (first call = \"\")"
   def help (zos, path, dir)
     Dir.chdir(path) do
       Dir.glob("*").each do |file|
