@@ -1,4 +1,4 @@
 require 'thor'
-require '../lib/jdt'
+require 'jdt'
 
-JDT.start()
+JDT.start
