@@ -11,7 +11,7 @@ end
 
 class ManifestHandler
 
-    attr_accessor :manifest, :path, :document, :has_found
+    attr_accessor :manifest, :path, :document, :has_found, :name, :type
 
     def initialize(search_path)
       @path = search_path
