@@ -18,10 +18,6 @@ class ExtensionFinder
 
       # has subfolder .jdt found
 
-
-
-
-
       possible_extension_path = File.expand_path("#{dir}#{File::SEPARATOR}#{File.basename(dir)}.xml")
       if(File.exists?(possible_extension_path))
         # file found
