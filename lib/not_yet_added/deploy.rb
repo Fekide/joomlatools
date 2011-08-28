@@ -13,7 +13,7 @@ joomla_admin_page = agent.get("#{ADMIN}")
 # puts joomla_admin_page.forms.first.inspect
 login_form = joomla_admin_page.forms.first
 login_form.field_with(:name => "username").value = "admin"
-login_form.field_with(:name => "passwd").value = "test"
+login_form.field_with(:name => "passwd").value = "spec"
 
 logged_in_admin_page = agent.submit(login_form)
 joomla_install_page = agent.get("#{INSTALLER}")

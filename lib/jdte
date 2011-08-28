@@ -1,3 +1,0 @@
-require 'jdt'
-
-JDT.start

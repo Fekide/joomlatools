@@ -4,7 +4,7 @@ describe "My behaviour" do
 
   it "should do something" do
 
-    "muh".should == File.basename("/test/muh")
+    "muh".should == File.basename("/spec/muh")
     
   end
 end
