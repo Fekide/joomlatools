@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="extension">
+    <xs:complexType>
+
+      <xs:choice maxOccurs="unbounded">
+        <xs:element type="xs:string" name="name"/>
+        <xs:element type="xs:string" name="libraryname"/>
+
+        <xs:element type="xs:string" name="version" minOccurs="0"/>
+
+        <xs:element type="xs:string" name="creationDate" minOccurs="0"/>
+        <xs:element type="xs:string" name="homepage" minOccurs="0"/>
+
+        <xs:element type="xs:string" name="author" minOccurs="0"/>
+        <xs:element type="xs:string" name="authorEmail" minOccurs="0"/>
+        <xs:element type="xs:string" name="authorUrl" minOccurs="0"/>
+
+        <xs:element type="xs:string" name="copyright" minOccurs="0"/>
+        <xs:element type="xs:string" name="license" minOccurs="0"/>
+        <xs:element type="xs:string" name="description" minOccurs="0"/>
+
+        <xs:element type="filesType" name="files"/>
+
+        <xs:element type="xs:string" name="scriptfile" minOccurs="0"/>
+
+        <xs:element name="updateservers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="server" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="type" use="optional"/>
+                      <xs:attribute type="xs:string" name="priority" use="optional"/>
+                      <xs:attribute type="xs:string" name="name" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:choice>
+
+      <xs:attribute name="type">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="library"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+
+      <xs:attribute type="xs:string" name="version"/>
+
+      <xs:attribute name="method">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="upgrade"/>
+            <xs:enumeration value="install"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="filesType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element type="xs:string" name="filename" minOccurs="0"/>
+      <xs:element type="xs:string" name="folder" minOccurs="0"/>
+    </xs:choice>
+
+    <xs:attribute type="xs:string" name="folder"/>
+  </xs:complexType>
+
+
+</xs:schema>

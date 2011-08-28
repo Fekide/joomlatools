@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="library" version="1.7.0" method="upgrade">
+
+  <name>activerecord</name>
+  <libraryname>activerecord</libraryname>
+
+  <files>
+    <filename>JoomlaConfig.php</filename>
+  </files>
+
+</extension>

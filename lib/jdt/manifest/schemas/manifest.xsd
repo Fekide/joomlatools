@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="extension" type="extensionType"/>
+  <xs:complexType name="extensionType">
+    <xs:sequence maxOccurs="unbounded">
+      <xs:any processContents="lax"/>
+    </xs:sequence>
+    <xs:attribute name="type">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="component"/>
+          <xs:enumeration value="module"/>
+          <xs:enumeration value="plugin"/>
+          <xs:enumeration value="library"/>
+          <xs:enumeration value="template"/>
+          <xs:enumeration value="language"/>
+          <xs:enumeration value="package"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="version"/>
+    <xs:attribute name="method">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="upgrade"/>
+          <xs:enumeration value="install"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>
