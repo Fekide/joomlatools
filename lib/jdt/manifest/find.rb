@@ -1,5 +1,13 @@
 module Jdt
 
+  class Manifest
+
+    def self.find(path = ".")
+      Manifest.new(ManifestFinder.new(path).find)
+    end
+
+  end
+
   class NoManifestException < RuntimeError
 
   end
@@ -12,13 +20,13 @@ module Jdt
       @path = search_path
     end
 
-    def load
-      check_file_existence
+    def find
+      retrieve_manifest_path
     end
 
     private
 
-    def check_file_existence
+    def retrieve_manifest_path
 
       # create list of possible files for the manifest
       manifest_named_after_directory = File.basename(File.expand_path(path))
@@ -28,7 +36,7 @@ module Jdt
       manifest_files.each do |file|
 
         if (File.exists?(file))
-          return Manifest.new(file)
+          return file
         end
 
       end

@@ -2,6 +2,14 @@ require "thor"
 
 module Jdt
 
+  class Manifest
+
+    def secure
+      
+    end
+
+  end
+
   class IndexCreater
     include Thor::Actions
 

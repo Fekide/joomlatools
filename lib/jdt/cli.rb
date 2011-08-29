@@ -1,10 +1,13 @@
 require "thor"
 
 require "commands/new"
-require "commands/create_index"
+require "commands/secure"
 require "commands/version"
-require "commands/zip"
-
+require "commands/build"
+require "commands/bump"
+require "commands/install"
+require "commands/status"
+require "commands/validate"
 
 module Jdt
 

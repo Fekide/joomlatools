@@ -7,7 +7,7 @@ module Jdt
     include Thor::Actions
 
     desc "new TYPE NAME", "creates a stub of TYPE with NAME"
-
+    method_options :location => "."
     def new(type, name)
 
       if (!Joomla::Extension::TYPES.include?(type))

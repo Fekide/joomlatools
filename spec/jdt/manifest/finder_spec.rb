@@ -1,9 +1,10 @@
 require "rspec"
 require "tmpdir"
 
-require "jdt/manifest/finder"
+require "jdt/manifest/manifest"
+require "jdt/manifest/find"
 
-describe "ManifestFinder" do
+describe Jdt::ManifestFinder do
 
   it "should find manifest.xml in folder" do
 
@@ -14,7 +15,7 @@ describe "ManifestFinder" do
       Dir.mkdir(path)
       File.new(manifest_path)
 
-      manifest = ManifestFinder.new(path).load
+      manifest = ManifestFinder.new(path).find
       manifest.should eq_a(Manifest)
 
       manifest.path.should eq(manifest_path)
@@ -31,7 +32,7 @@ describe "ManifestFinder" do
       Dir.mkdir(path)
       File.new(manifest_path)
 
-      manifest = ManifestFinder.new(path).load
+      manifest = ManifestFinder.new(path).find
       manifest.should eq_a(Manifest)
 
       manifest.path.should eq(manifest_path)
@@ -47,7 +48,7 @@ describe "ManifestFinder" do
       Dir.mkdir(path)
 
       expect {
-          ManifestFinder.new(path).load
+          ManifestFinder.new(path).find
       }.to raise_error(NoManifestException)
 
     end

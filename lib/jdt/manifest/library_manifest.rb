@@ -1,20 +1,27 @@
-require "jdt/helper/manifest"
+require "nokogiri"
 
 module Jdt
+  class LibraryManifest < Manifest
 
-  class LibraryManifestValidator < ManifestValidator
+    def type
+      "library"
+    end
 
-    def validate_hook
+    def type_short
+      "lib"
+    end
 
-      # validate files
-      manifest.files.each do |file|
-        validate_file_existence("#{folder}/#{file}")
+    def library_name
+      @doc.xpath("//extension/libraryname").text
+    end
+
+    def semantics_valid?
+      if(not super)
+        return false
       end
 
-
+      # SPECIFIC VALIDATIONS
     end
 
   end
-
-
 end

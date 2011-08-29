@@ -1,8 +1,9 @@
 require "rspec"
 
-require "jdt/manifest/schema_validator"
+require "jdt/manifest/manifest"
+require "jdt/manifest/validation"
 
-describe "ManifestSchemaValidator" do
+describe Jdt::ManifestSchemaValidator do
 
   DATA_PATH = "#{File.dirname(__FILE__)}/data"
 
@@ -12,23 +13,17 @@ describe "ManifestSchemaValidator" do
              "#{DATA_PATH}/library.xml"]
 
     files.each do |file|
-      expect {
-        Jdt::ManifestSchemaValidator.new(file).validate
-      }.to_not raise_error(Jdt::BadManifestException)
+      Jdt::ManifestSchemaValidator.new(file).valid?.should eq(true)
     end
   end
 
   it "should not validate against schemas" do
 
-    files = [#"#{DATA_PATH}/manifest.xml",
+    files = ["#{DATA_PATH}/manifest.xml",
              "#{DATA_PATH}/library_error.xml"]
 
     files.each do |file|
-
-      expect {
-        Jdt::ManifestSchemaValidator.new(file).validate
-      }.to raise_error(Jdt::BadManifestException)
-
+      Jdt::ManifestSchemaValidator.new(file).valid?.should eq(false)
     end
   end
 

@@ -5,12 +5,11 @@ module Jdt
   class CLI < Thor
     include Thor::Actions
 
-    desc "install","installs the extension at an active Joomla! system"
+    desc "secure", "ensures the existence of index.html for every referenced folder"
     method_options :location => "."
-    def install
+    def secure ()
       manifest = Manifest.find(options[:location])
-      
-
+      manifest.secure
     end
 
   end
