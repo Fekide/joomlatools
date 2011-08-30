@@ -26,6 +26,7 @@ module Jdt
       @location = "."
     end
 
+    no_tasks{
     def generate
       # create directory
       empty_directory(prefixed_name)
@@ -68,11 +69,11 @@ module Jdt
     def folder
       "#{location}/#{prefixed_name}"
     end
-
+    }
   end
 
   class LanguageGenerator < Generator
-
+    no_tasks{
     def generate
       super
 
@@ -85,11 +86,11 @@ module Jdt
     def type_short
       "lang"
     end
-
+    }
   end
 
   class TemplateGenerator < Generator
-
+    no_tasks{
     def generate
       super
 
@@ -106,11 +107,11 @@ module Jdt
     def type_short
       "tpl"
     end
-
+    }
   end
 
   class LibraryGenerator < Generator
-
+    no_tasks{
     def generate
       super
     end
@@ -122,11 +123,11 @@ module Jdt
     def type_short
       "lib"
     end
-
+    }
   end
 
   class PluginGenerator < Generator
-
+    no_tasks{
     def generate
       super
 
@@ -142,11 +143,11 @@ module Jdt
     def type_short
       "plg"
     end
-
+    }
   end
 
   class ModuleGenerator < Generator
-
+    no_tasks{
     def generate
       super
 
@@ -167,11 +168,11 @@ module Jdt
     def type_short
       "mod"
     end
-
+    }
   end
 
   class ComponentGenerator < Generator
-
+    no_tasks{
     def generate
       super
 
@@ -255,7 +256,7 @@ module Jdt
     def type_short
       "com"
     end
-
+    }
   end
 
 end
