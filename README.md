@@ -8,8 +8,11 @@ The Joomla Development Tool is a command line tool to easen the development of e
 - package extension (create installable zip file)
 - deploy extension (install extension on running joomla system)
 - sync extension files (synchronize files of directory into joomla installation locally)
-- version (version of the JDT)
-- release (increment version number, ask for changes for the changelog)
+
+- ```version```  (version of the JDT)
+
+- ```build``` (creates zip file for deployment, with timestamp)
+- ```release``` (creates zip file for deployment)
 
 # Are additional files being created within my extension?
 No, only a .jdt directory is created at the root of the extension in which configuration files, cached data, etc. is stored. This, however, can be removed using the jdt clean command.
@@ -20,13 +23,19 @@ No, only Joomla 1.6 development is supported. This is due to the change of the m
 # Installation Instructions
 
 1. clone the repository
-2. gem build jdt.gemspec
-3. gem install jdt.gem
+2. rake install
 
 The tool is then useable in the command line using $> jdt
 
+# Development Instructions
+
+1. clone the repository
+2. install the following gems: ZenTest, gem-release
+3. bundle
+4. autotest (to execute the tests)
+
 # Joomla Versions
-This tool supports solely Joomla 1.6.
+This tool supports solely Joomla 1.7.
 
 # Future work
 - validate (validate structure using predefined set of rules: manifest.xml against DTD/XSD schema, naming conventions required by joomla, etc.)
