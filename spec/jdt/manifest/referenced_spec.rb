@@ -14,8 +14,14 @@ describe Jdt::Referenced do
         file << "test"
       end
 
-      ref = Jdt::Referenced.file_ref(file)
+      ref = Jdt::Referenced.new
+      ref.type = :file
+      ref.extension_path = dir
+      ref.path = "test.ext"
+
       ref.exists?.should eq(true)
+      ref.path_in_extension.should eq("test.ext")
+      ref.path_in_filesystem.should eq("#{dir}/test.ext")
     end
 
   end

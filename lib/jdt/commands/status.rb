@@ -1,5 +1,4 @@
 require 'thor'
-require 'nokogiri'
 
 module Jdt
 
@@ -16,8 +15,6 @@ module Jdt
         say("Author: #{manifest.author} [#{manifest.author_email}]")
       rescue NoManifestException
         say("No manifest found")
-      rescue BadManifestException
-        say("The found manifest is not valid")
       end
 
     end

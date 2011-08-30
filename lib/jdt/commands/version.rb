@@ -1,4 +1,5 @@
 require "thor"
+
 require "jdt/version"
 
 module Jdt

@@ -3,7 +3,15 @@ module Jdt
   class Manifest
 
     def self.find(path = ".")
-      Manifest.new(ManifestFinder.new(path).find)
+      Manifest.new(ManifestFinder.new(path).find).to_specific
+    end
+
+    def to_specific
+      if(ext_type == "library")
+        LibraryManifest.new(file)
+      else
+        raise RuntimeError("the current type #{ext_type} is not supported")
+      end
     end
 
   end

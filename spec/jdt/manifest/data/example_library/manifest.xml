@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<extension method="upgrade" type="library" version="1.7.0">
+    
+	<name>activerecord</name>
+    <libraryname>activerecord</libraryname>
+
+    <version>2.1.1</version>
+    <creationDate>August 2011</creationDate>
+    <homepage>https://www.github.com/simonharrer/activerecord</homepage>
+
+    <author>Simon Harrer</author>
+    <authorEmail>simon.harrer@feki.de</authorEmail>
+    <authorUrl>http://www.feki.de</authorUrl>
+
+	<files>
+		<filename>JoomlaConfig.php</filename>
+		<filename>JoomlaActiveRecord.php</filename>
+        <filename>README.md</filename>
+		<folder>dist</folder>
+	</files>
+
+</extension>

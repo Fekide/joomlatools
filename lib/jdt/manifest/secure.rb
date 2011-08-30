@@ -24,7 +24,7 @@ module Jdt
     private
 
     def create_index_recursive (path)
-      template('/templates/component/index.erb', "#{path}/index.html")
+      template('/templates/component/index.html.erb', "#{path}/index.html")
       Dir.chdir("#{path}") do
         Dir.glob("*").each do |dir|
           if File.directory?(dir)

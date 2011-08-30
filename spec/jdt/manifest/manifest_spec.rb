@@ -4,6 +4,7 @@ require "ftools"
 
 require "jdt/manifest/manifest"
 require "jdt/manifest/attributes"
+require "jdt/manifest/bump"
 
 describe Jdt::Manifest do
 
@@ -14,11 +15,11 @@ describe Jdt::Manifest do
     manifest = Jdt::Manifest.new(FILE)
 
     manifest.required_joomla_version.should eq("1.7.0")
-    manifest.extension_method.should eq("upgrade")
-    manifest.type.should eq("library")
+    manifest.ext_method.should eq("upgrade")
+    manifest.ext_type.should eq("library")
 
     expect {
-      manifest.type_short
+      manifest.ext_type_short
     }.to raise_error(NoMethodError)
 
     expect {

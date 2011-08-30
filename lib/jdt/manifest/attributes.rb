@@ -2,13 +2,17 @@ require "nokogiri"
 
 module Jdt
 
+  class ElementNotFoundError < RuntimeError
+
+  end
+
   class Manifest
 
     def required_joomla_version
       @doc.xpath("//extension").first['version']
     end
 
-    def extension_method
+    def ext_method
       @doc.xpath("//extension").first['method']
     end
 
@@ -33,7 +37,7 @@ module Jdt
     end
 
     def prefixed_name
-      "#{type_short}_#{name}"
+      "#{ext_type_short}_#{name}"
     end
 
     def prefixed_name_with_version
@@ -60,11 +64,11 @@ module Jdt
       @doc.xpath("//extension/license").text
     end
 
-    def type_short
+    def ext_type_short
       raise NoMethodError
     end
 
-    def type
+    def ext_type
       @doc.xpath("//extension").first['type']
     end
 

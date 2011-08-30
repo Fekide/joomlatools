@@ -1,17 +1,19 @@
+require "nokogiri"
+
 module Jdt
 
   class Manifest
 
     def bump!(type)
       new_version = bump_version(type, version)
-      @doc.xpath("//extension/version").text = new_version
+      @doc.at_css("extension > version").content = new_version
       update_file_with_doc
     end
 
     private
 
     def update_file_with_doc
-      File.open(file) do |f|
+      File.open(file,"w") do |f|
         f.write(@doc.to_xml)
       end
     end

@@ -1,8 +1,5 @@
 require "thor"
 
-require "jdt/manifest/finder"
-require "jdt/manifest/schema_validator"
-
 module Jdt
 
   class CLI < Thor

@@ -7,19 +7,32 @@ module Jdt
     attr_accessor :errors, :warnings
 
     def valid?
-      @errors = []
-      @warnings = []
       syntax_valid? and semantics_valid?
+    end
+
+    def errors
+      if(not @errors)
+        @errors = []
+      end
+      @errors
+    end
+
+    def warnings
+      if(not @warnings)
+        @warnings = []
+      end
+      @warnings
     end
 
     private
 
     def syntax_valid?
-      ManifestSchemaValidator.new(self).validate
+      ManifestSchemaValidator.new(self).valid?
     end
 
     def semantics_valid?
-      
+      # todo change this
+      true
     end
 
   end
@@ -37,53 +50,44 @@ module Jdt
                :language => "#{SCHEMAS_FOLDER}/language.xsd",
                :package => "#{SCHEMAS_FOLDER}/package.xsd"}
 
-    attr_accessor :manifest, :errors
+    attr_accessor :manifest
 
     def initialize(manifest)
       @manifest = manifest
-      @errors = []
     end
 
     def valid?
-      read_xml
       validate_manifest and validate_specific
     end
 
     private
-
-    def read_xml
-      @doc = Nokogiri::XML(File.read(manifest))
-    end
 
     def validate_manifest
       validate_against_schema(SCHEMAS[:manifest])
     end
 
     def validate_specific
-      type = @doc.xpath("//extension").first['type']
-      type_symbol = type.to_sym
-      validate_against_schema(SCHEMAS[type_symbol])
+      validate_against_schema(SCHEMAS[manifest.ext_type.to_sym])
     end
 
     def validate_against_schema(schema)
       xsd = Nokogiri::XML::Schema(File.read(schema))
 
-      xsd.validate(@doc).each do |error|
-        errors << error.message
+      xsd.validate(manifest.doc).each do |error|
+        @manifest.errors << error.message
       end
 
-      errors.empty?
+      @manifest.errors.empty?
     end
 
   end
 
   class ManifestValidator
 
-    attr_accessor :manifest, :errors, :warnings
+    attr_accessor :manifest
 
-    def initialize
-      @errors = []
-      @warnings = []
+    def initialize(manifest)
+      @manifest = manifest
     end
 
     # Validates the manifest
@@ -97,18 +101,18 @@ module Jdt
       # WARNING when metadata is missing
 
       # evaluate the validation result
-      errors.empty?
+      @manifest.errors.empty?
     end
 
     def validate_file_existence(file)
       if (not File.exist?(file))
-        errors << "File #{file} does not exist, but should"
+        manifest.errors << "File #{file} does not exist, but should"
       end
     end
 
     def validate_directory_existence(dir)
       if (not Dir.exist?(file))
-        errors << "File #{file} does not exist, but should"
+        manifest.errors << "File #{file} does not exist, but should"
       end
     end
 
