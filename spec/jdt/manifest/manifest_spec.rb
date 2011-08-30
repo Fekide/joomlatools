@@ -1,6 +1,6 @@
 require "rspec"
 require "tmpdir"
-require "ftools"
+require "fileutils"
 
 require "jdt/manifest/manifest"
 require "jdt/manifest/attributes"

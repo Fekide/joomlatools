@@ -7,7 +7,7 @@ module Jdt
   class ExtensionTypeNotFoundError < RuntimeError;
   end
 
-  class Generator
+  class Generator < Thor
     include Thor::Actions
 
     # include templates directory
@@ -34,6 +34,10 @@ module Jdt
     end
 
     def type
+      throw NoMethodError
+    end
+
+    def type_short
       throw NoMethodError
     end
 
