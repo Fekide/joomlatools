@@ -16,7 +16,19 @@ require "jdt/generator"
 module Jdt
 
   class CLI < Thor
-    
+
+    no_tasks {
+      def handle_errors(&block)
+        begin
+          yield
+        rescue NoManifestException
+          say "No manifest found"
+        end
+      end
+    }
+
   end
+
+
 
 end

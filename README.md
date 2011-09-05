@@ -11,6 +11,7 @@ The **Joomla Development Tool** (short: **jdt**) is a command line tool to easen
 - `bump` (increments either --patch, --minor or --major version, --patch is default)
 
 (NOT YET IMPLEMENTED)
+
 - `clean` (removes the `/zip` and the `/.jdt` directories)
 - `install` (installs the extension at a Joomla! instance)
 - `uninstall` (uninstalls the extension from a Joomla! instance)

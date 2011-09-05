@@ -12,7 +12,8 @@ module Jdt
     end
 
     def to_xml
-      @doc.to_xml(:indent => 4, :encoding => 'UTF-8')
+      xsl = Nokogiri::XSLT(File.read("#{File.dirname(File.expand_path(__FILE__))}/xslts/pretty_print.xsl"))
+      xsl.transform(@doc).to_s
     end
 
     def folder

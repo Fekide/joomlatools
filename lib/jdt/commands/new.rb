@@ -11,15 +11,19 @@ module Jdt
 
     def new(type, name)
 
-      begin
-        generator = Generator.find(type.to_sym, name)
-        generator.location = options[:location]
-        generator.generate
-      rescue Jdt::ExtensionTypeNotFoundError
-        say("Given type is no Joomla extension type. Chose one of the available Joomla extension types:")
-        say("Extension types: #{Generator::GENERATORS.join(" ")}")
-      end
+      handle_errors do
 
+        begin
+          generator = Generator.find(type.to_sym, name)
+          generator.location = options[:location]
+          generator.generate
+        rescue Jdt::ExtensionTypeNotFoundError
+          say("Given type is no Joomla extension type. Chose one of the available Joomla extension types:")
+          say("Extension types: #{Generator::GENERATORS.join(" ")}")
+        end
+
+      end
+      
     end
 
   end
