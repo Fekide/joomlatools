@@ -62,6 +62,18 @@ Make sure that you have [RubyGems](https://rubygems.org/) 1.8.9 installed (gem u
 3. `bundle` (installs all required gems defined by the gem specification)
 4. `autotest` (to execute the tests, continously)
 
+## Testing
+Testing is done using cucumber with aruba for testing the command line interface.
+
+### Acceptance and Integration Tests
+The acceptance and integration tests are specified using the [`gherkin`](https://github.com/cucumber/cucumber/wiki/Gherkin) language and executed using [`cucumber`](https://github.com/cucumber/cucumber).
+They are located within the `features` folder and can be executed using `cucumber features` from within the root directory of the JDT.
+
+### Unit Tests
+The unit tests are implemented using [`rspec`](https://github.com/rspec/rspec).
+They are located within the `spec` folder and can be executed using `rspec spec` from within the root directory of the JDT.
+
+
 ## Technical Runtime Details
 
 It is written with Ruby 1.8.7 ontop of several libraries:
