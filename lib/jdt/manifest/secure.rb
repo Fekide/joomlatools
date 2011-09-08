@@ -5,33 +5,9 @@ module Jdt
   class Manifest
 
     def secure
-      
-    end
-
-  end
-
-  class IndexCreater
-    include Thor::Actions
-
-    def initialize (path)
-      @path = path
-    end
-
-    def create_index
-      create_index_recursive(@path)
-    end
-
-    private
-
-    def create_index_recursive (path)
-      template('/templates/component/index.html.erb', "#{path}/index.html")
-      Dir.chdir("#{path}") do
-        Dir.glob("*").each do |dir|
-          if File.directory?(dir)
-            create_index_recursive("#{path}/#{dir}")
-          end
-        end
-      end
+      "do nothing"
+      # TODO check if every file with the ending .php contains the line::::: defined('_JEXEC') or die('Restricted access');
+      # TODO if not, insert this directly after the line containing <?php within the file, including the comment: //No direct access to this file and print which files have been changed.   
     end
 
   end

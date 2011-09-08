@@ -1,1 +1,7 @@
 require "jdt/generator/generator"
+require "jdt/generator/component_generator"
+require "jdt/generator/language_generator"
+require "jdt/generator/library_generator"
+require "jdt/generator/module_generator"
+require "jdt/generator/plugin_generator"
+require "jdt/generator/template_generator"

@@ -69,6 +69,11 @@ Testing is done using cucumber with aruba for testing the command line interface
 The acceptance and integration tests are specified using the [`gherkin`](https://github.com/cucumber/cucumber/wiki/Gherkin) language and executed using [`cucumber`](https://github.com/cucumber/cucumber).
 They are located within the `features` folder and can be executed using `cucumber features` from within the root directory of the JDT.
 
+The tests are written to only work in specific cases:
+
+* the gem has to be installed locally using `rake install` from within the JDT directory
+* the tests only work using Windows. If you have a posix system, it would work if you simply replace all jdt.bat with jdt. TODO implement logic in cucumber using before and after to ensure that the command is correct
+
 ### Unit Tests
 The unit tests are implemented using [`rspec`](https://github.com/rspec/rspec).
 They are located within the `spec` folder and can be executed using `rspec spec` from within the root directory of the JDT.

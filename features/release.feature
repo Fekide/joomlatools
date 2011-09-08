@@ -3,13 +3,6 @@ Feature: release
   In order to obtain a deployable zip file of the extension
   I as a CLI
 
-
-  Scenario: Not within an extension
-    Given the current directory is no extension directory
-    When I run `jdt.bat release`
-    Then the output should contain exactly "No manifest found\n"
-
-    
   Scenario: Success
     Given a file named "manifest.xml" with:
     """

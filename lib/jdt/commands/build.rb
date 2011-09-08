@@ -23,6 +23,16 @@ module Jdt
       end
     end
 
+    desc "clean","removes the /zip directory"
+    method_options :location => "."
+
+    def clean
+      handle_errors do
+        Manifest.find(options[:location]).clean
+        say "Everything is cleaned!"
+      end
+    end
+
   end
 
 end

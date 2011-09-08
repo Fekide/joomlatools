@@ -17,8 +17,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "nokogiri"
-  s.add_dependency "thor"
+  s.add_dependency "thor","0.15.0.rc2"
   s.add_dependency "rubyzip"
+  s.add_dependency "launchy"
   s.add_development_dependency "rspec"
   s.add_development_dependency "cucumber"
   s.add_development_dependency "aruba"

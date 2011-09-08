@@ -1,3 +1,5 @@
+require "pathname"
+
 module Jdt
 
   class Manifest
@@ -7,7 +9,7 @@ module Jdt
     end
 
     def to_specific
-      if(ext_type == "library")
+      if (ext_type == "library")
         LibraryManifest.new(file)
       else
         raise RuntimeError("the current type #{ext_type} is not supported")
@@ -36,9 +38,26 @@ module Jdt
 
     def retrieve_manifest_path
 
-      # create list of possible files for the manifest
-      manifest_named_after_directory = File.basename(File.expand_path(path))
-      manifest_files = ["#{File.expand_path(path)}/manifest.xml", manifest_named_after_directory]
+      manifest_files = []
+
+      Pathname.new(File.expand_path(path)).ascend do |current_path|
+
+        # create list of possible files for the manifest
+        current_folder = current_path
+        current_folder_name = File.basename(current_folder)
+
+        manifest_named_after_directory = "#{current_folder}/#{current_folder_name}.xml"
+        manifest_with_fixed_name = "#{current_folder}/manifest.xml"
+        manifest_files << manifest_with_fixed_name
+        manifest_files << manifest_named_after_directory
+
+        if (current_folder_name.include? "_")
+          folder_name_without_prefix = current_folder_name.split("_")[1..-1].join("_")
+
+          manifest_files << "#{current_folder}/#{folder_name_without_prefix}.xml"
+        end
+
+      end
 
       # evaluate each possible manifest file
       manifest_files.each do |file|

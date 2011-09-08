@@ -22,28 +22,18 @@ module Jdt
 
     def zip(type)
 
-      if (type == :release)
-        zip_file_name = zip_file
-      elsif (type == :build)
-        zip_file_name = zip_file_with_timestamp
-      else
-        raise ArgumentError("Type is not either :release or :build, but #{type}")
-      end
+      zip_file_name = zip_file_name(type)
 
       # ensure that the file does not exist
-      if (File.exists?(zip_file_name))
-        File.delete(zip_file_name)
-      end
+      ensure_zip_file_does_not_exist(zip_file_name)
 
       # ensure that directory exists
-      dir = File.dirname(zip_file_name)
-      if(not File.directory?(dir))
-        Dir.mkdir(dir)
-      end
+      ensure_zip_dir_exists(zip_file_name)
 
       # create zip file
       Zip::ZipFile.open(zip_file_name, Zip::ZipFile::CREATE) do |zos|
         add_files_to_zip(zos)
+        add_index_html_to_every_dir(zos)
       end
 
       # return zip file
@@ -51,6 +41,30 @@ module Jdt
     end
 
     private
+
+    def ensure_zip_dir_exists(zip_file_name)
+      dir = File.dirname(zip_file_name)
+      if (not File.directory?(dir))
+        Dir.mkdir(dir)
+      end
+    end
+
+    def ensure_zip_file_does_not_exist(zip_file_name)
+      if (File.exists?(zip_file_name))
+        File.delete(zip_file_name)
+      end
+    end
+
+    def zip_file_name(type)
+      if (type == :release)
+        zip_file_name = zip_file
+      elsif (type == :build)
+        zip_file_name = zip_file_with_timestamp
+      else
+        raise ArgumentError("Type is not either :release or :build, but #{type}")
+      end
+      zip_file_name
+    end
 
     def zip_folder
       "#{@manifest.folder}/zip"
@@ -68,7 +82,7 @@ module Jdt
       Time.now.strftime("%Y%m%d%H%M%S%L")
     end
 
-     def add_files_to_zip(zip)
+    def add_files_to_zip(zip)
 
       # add manifest
       add_manifest(zip)
@@ -99,7 +113,35 @@ module Jdt
       end
     end
 
+    def add_index_html_to_every_dir(zos)
+      # TODO add a index.html file containing only the line <html><body bgcolor="#FFFFFF"></body></html> at every directory within the zip file
+    end
 
+  end
+
+  class IndexCreater
+    include Thor::Actions
+
+    def initialize (path)
+      @path = path
+    end
+
+    def create_index
+      create_index_recursive(@path)
+    end
+
+    private
+
+    def create_index_recursive (path)
+      template('/templates/component/index.html.erb', "#{path}/index.html")
+      Dir.chdir("#{path}") do
+        Dir.glob("*").each do |dir|
+          if File.directory?(dir)
+            create_index_recursive("#{path}/#{dir}")
+          end
+        end
+      end
+    end
 
   end
 
