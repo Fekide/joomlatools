@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "thor","0.15.0.rc2"
   s.add_dependency "rubyzip"
   s.add_dependency "launchy"
+  s.add_dependency "mechanize"
   s.add_development_dependency "rspec"
   s.add_development_dependency "cucumber"
   s.add_development_dependency "aruba"
