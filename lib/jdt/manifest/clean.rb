@@ -1,6 +1,5 @@
 module Jdt
 
-
   class Manifest
 
     def clean
@@ -9,7 +8,5 @@ module Jdt
     end
 
   end
-
-
 
 end

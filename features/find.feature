@@ -11,10 +11,9 @@ Feature: find the manifest file
     | build    |
     | bump     |
     | clean    |
-    | deploy   |
+    | deploy  "http://test.de" |
     | manifest |
     | secure   |
     | status   |
     | undeploy |
     | validate |
-    | version  |

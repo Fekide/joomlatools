@@ -4,14 +4,15 @@ module Jdt
 
     desc "clean", "Removes the ../zip, ../.jdt and ~/.jdt folder"
     method_options :global => true
+    method_options :location => "."
     def clean
-
-      if(options.global?)
-
-      end
-
-
       handle_errors do
+
+        if (options.global?)
+
+        end
+
+
         # find manifest
         manifest = Manifest.find(options[:location])
         manifest.clean
