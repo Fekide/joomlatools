@@ -5,8 +5,6 @@ module Jdt
     def generate(name)
       super
 
-      view_name = "#{name}"
-
       empty_directory("#{folder}")
       template('templates/component/manifest.xml.erb', "#{folder}/manifest.xml")
       template('templates/component/script.php.erb', "#{folder}/script.php")
@@ -19,15 +17,9 @@ module Jdt
 
       #site view
       empty_directory("#{site_dir}/views/")
-      empty_directory("#{site_dir}/views/#{view_name}")
-      template('templates/component/site/views/view_name/view.html.erb', "#{site_dir}/views/#{view_name}/view.html.php")
-      empty_directory("#{site_dir}/views/#{view_name}/tmpl")
-      template('templates/component/site/views/view_name/tmpl/default.php.erb', "#{site_dir}/views/#{view_name}/tmpl/default.php")
-      template('templates/component/site/views/view_name/tmpl/default.xml.erb', "#{site_dir}/views/#{view_name}/tmpl/default.xml")
 
       #site models
       empty_directory("#{site_dir}/models/")
-      template('templates/component/site/models/com_model_name.erb', "#{site_dir}/models/com_#{name}.php")
 
       #site controllers
       empty_directory("#{site_dir}/controllers/")
@@ -42,15 +34,11 @@ module Jdt
       empty_directory("#{admin_dir}")
       template('templates/component/admin/access.xml.erb', "#{admin_dir}/access.xml")
       template('templates/component/admin/config.xml.erb', "#{admin_dir}/config.xml")
-      template('templates/component/admin/com_name.php.erb', "#{admin_dir}/com_#{name}.php")
+      template('templates/component/admin/com_name.php.erb', "#{admin_dir}/#{prefixed_name}.php")
       template('templates/component/admin/controller.php.erb', "#{admin_dir}/controller.php")
 
       #admin views
       empty_directory("#{admin_dir}/views/")
-      empty_directory("#{admin_dir}/views/#{view_name}")
-      template('templates/component/admin/views/view_name/view.html.erb', "#{admin_dir}/views/#{view_name}/view.html.php")
-      empty_directory("#{admin_dir}/views/#{view_name}/tmpl")
-      template('templates/component/admin/views/view_name/tmpl/default.php.erb', "#{admin_dir}/views/#{view_name}/tmpl/default.php")
 
       #admin models
       empty_directory("#{admin_dir}/models/")

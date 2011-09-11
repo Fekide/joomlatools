@@ -5,6 +5,8 @@ module Jdt
     def generate(name)
       super
 
+      # site or admin is important
+
       #create empty directory
       empty_directory("#{folder}/css")
       empty_directory("#{folder}/html")
