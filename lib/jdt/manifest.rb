@@ -1,6 +1,7 @@
 require "jdt/manifest/attributes"
-require "jdt/manifest/build"
+require "jdt/manifest/build_release"
 require "jdt/manifest/bump"
+require "jdt/manifest/clean"
 require "jdt/manifest/find"
 require "jdt/manifest/library_manifest"
 require "jdt/manifest/manifest"

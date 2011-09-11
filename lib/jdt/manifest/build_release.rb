@@ -12,6 +12,14 @@ module Jdt
       ExtensionZipper.new(self).zip(:release)
     end
 
+    def zip_folder
+      "#{folder}/zip"
+    end
+
+    def config_folder
+      "#{folder}/.jdt"
+    end
+
   end
 
   class ExtensionZipper
@@ -67,7 +75,7 @@ module Jdt
     end
 
     def zip_folder
-      "#{@manifest.folder}/zip"
+      @manifest.zip_folder
     end
 
     def zip_file

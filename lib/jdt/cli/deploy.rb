@@ -1,4 +1,3 @@
-require "thor"
 require "mechanize"
 
 module Jdt
@@ -6,21 +5,9 @@ module Jdt
   class CLI < Thor
     include Thor::Actions
 
-    desc "install", "installs the extension at an active Joomla! system"
-    method_options :location => "."
-
-    def install
-      handle_errors do
-        manifest = Manifest.find(options[:location])
-        zip_file = manifest.build
-
-      end
-
-    end
-
-
     desc "deploy URL", "deploys the extension at a remote Joomla! reachable via URL"
     method_options :location => "."
+
     def deploy(url)
       handle_errors do
         manifest = Manifest.find(options[:location])
@@ -59,6 +46,7 @@ module Jdt
         puts installed_feedback.body
       end
     end
+
 
   end
 

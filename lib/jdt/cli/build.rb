@@ -1,5 +1,3 @@
-require 'thor'
-
 module Jdt
 
   class CLI < Thor
@@ -20,16 +18,6 @@ module Jdt
     def release
       handle_errors do
         say "Release created at: #{Manifest.find(options[:location]).release}"
-      end
-    end
-
-    desc "clean","removes the /zip directory"
-    method_options :location => "."
-
-    def clean
-      handle_errors do
-        Manifest.find(options[:location]).clean
-        say "Everything is cleaned!"
       end
     end
 

@@ -1,18 +1,19 @@
 require "thor"
+require "thor/group"
 
-require "jdt/commands/build"
-require "jdt/commands/bump"
-require "jdt/commands/install"
-require "jdt/commands/new"
-require "jdt/commands/pretty_print"
-require "jdt/commands/secure"
-require "jdt/commands/status"
-require "jdt/commands/validate"
-require "jdt/commands/version"
-
-require "jdt/manifest"
-require "jdt/generator"
-require "jdt/xampp"
+require "jdt/cli/build"
+require "jdt/cli/bump"
+require "jdt/cli/clean"
+require "jdt/cli/deploy"
+require "jdt/cli/generate"
+require "jdt/cli/new"
+require "jdt/cli/pretty_print"
+require "jdt/cli/secure"
+require "jdt/cli/status"
+require "jdt/cli/undeploy"
+require "jdt/cli/validate"
+require "jdt/cli/version"
+require "jdt/cli/xampp"
 
 module Jdt
 
@@ -29,7 +30,6 @@ module Jdt
     }
 
   end
-
 
 
 end

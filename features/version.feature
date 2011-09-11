@@ -6,4 +6,4 @@ Feature: Version
 
   Scenario: Display current version
     When I run `jdt.bat version`
-    Then the output should contain exactly "0.0.2\n"
+    Then the output should contain exactly "0.0.3\n"

@@ -1,3 +1,8 @@
+# rubygems need to be required so that this extension also works on ruby 1.8.7. For ruby 1.9.2, this is not neccessary!
 require "rubygems"
-require "jdt/cli"
+
+# require the full JDT
+require "jdt"
+
+# start the command line tool
 Jdt::CLI.start

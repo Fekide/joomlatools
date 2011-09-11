@@ -1,7 +1,3 @@
-require "thor"
-
-require "jdt/version"
-
 module Jdt
 
   class CLI < Thor
