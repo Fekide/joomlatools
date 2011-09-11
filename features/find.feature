@@ -8,12 +8,13 @@ Feature: find the manifest file
 
   Examples:
     | status   |
-    | status   |
-    | clean    |
     | build    |
-    | release  |
-    | manifest |
-    | validate |
-    | secure   |
     | bump     |
-    | install  |
+    | clean    |
+    | deploy   |
+    | manifest |
+    | secure   |
+    | status   |
+    | undeploy |
+    | validate |
+    | version  |
