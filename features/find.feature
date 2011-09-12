@@ -3,11 +3,11 @@ Feature: find the manifest file
 
   Scenario Outline: Not within an extension
     Given the current directory is no extension directory
-    When I run `jdt.bat <status>`
+    When I run `jdt.bat <command>`
     Then the output should contain exactly "No manifest found\n"
 
   Examples:
-    | status   |
+    | command   |
     | build    |
     | bump     |
     | clean    |

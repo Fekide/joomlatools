@@ -19,5 +19,5 @@ Feature: Manifest
         <name>activerecord</name>
         <version>1.0.0</version>
       </extension>
-      
+
       """
