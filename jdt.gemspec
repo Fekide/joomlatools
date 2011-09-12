@@ -6,9 +6,9 @@ require "jdt/version"
 Gem::Specification.new do |s|
   s.name        = "jdt"
   s.version = Jdt::VERSION
-  s.authors = ['Simon Harrer', 'Andreas Vorndran']
-  s.email = ['simon.harrer@feki.de','andreas.vorndran@feki.de']
-  s.homepage = 'http://github.com/simonharrer/joomlatools'
+  s.authors = ['Simon Harrer', 'Andreas Vorndran', 'Sebastian Boosz']
+  s.email = ['simon.harrer@feki.de','andreas.vorndran@feki.de', 'sebastian.boosz@feki.de']
+  s.homepage = 'https://github.com/Fekide/joomlatools'
   s.summary = %q{A command line tool for developing Joomla Extensions}
   s.description = %q{A command line tool to help developing Joomla Extensions. }
 
