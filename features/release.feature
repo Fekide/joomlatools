@@ -3,6 +3,7 @@ Feature: release
   In order to obtain a deployable zip file of the extension
   I as a CLI
 
+  @wip @announce
   Scenario: Success
     Given a file named "manifest.xml" with:
     """
@@ -26,6 +27,8 @@ Feature: release
     And an empty file named "CHANGELOG"
     And a directory named "lib"
     And an empty file named "lib/test.php"
+    And a directory named "lib/subdir"
+    And an empty file named "lib/subdir/test.php"
     And a directory named "zip" should not exist
 
     When I run `jdt.bat release`
@@ -38,3 +41,16 @@ Feature: release
     """
     And a file named "CHANGELOG" should not exist within a zip file "zip/lib_activerecord-v0.0.1.zip"
     And a file named "lib/test.php" should exist within a zip file "zip/lib_activerecord-v0.0.1.zip"
+    And a file named "lib/subdir/test.php" should exist within a zip file "zip/lib_activerecord-v0.0.1.zip"
+    And a file named "index.html" should exist within a zip file "zip/lib_activerecord-v0.0.1.zip" with:
+    """
+    <html><body bgcolor="#FFFFFF"></body></html>
+    """
+    And a file named "lib/index.html" should exist within a zip file "zip/lib_activerecord-v0.0.1.zip" with:
+    """
+    <html><body bgcolor="#FFFFFF"></body></html>
+    """
+    And a file named "lib/subdir/index.html" should exist within a zip file "zip/lib_activerecord-v0.0.1.zip" with:
+    """
+    <html><body bgcolor="#FFFFFF"></body></html>
+    """

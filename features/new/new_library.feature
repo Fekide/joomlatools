@@ -2,7 +2,6 @@ Feature: new library
 
   Generation data specific for generation a library.
 
-  @wip
   Scenario: Create new library with name test
     When I successfully run `jdt.bat new library test`
     Then the following directories should exist:
