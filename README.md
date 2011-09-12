@@ -4,29 +4,38 @@ The **Joomla Development Tool** (short: **jdt**) is a command line tool to easen
 # Features
 
 - `status` (shows the current extension type, name, version, author, etc.)
-- `new TYPE NAME` (bootstraps a Joomla! extension, e.g. a component)
+- `new <commands>` (bootstraps a Joomla! extension, e.g. a component)
+    - `component NAME` (bootstraps a component)
+    - `module NAME` (bootstraps a module)
+    - `plugin NAME` (bootstraps a plugin)
+    - `library NAME` (bootstraps a library)
+    - `template NAME` (bootstraps a template)
+    - `language NAME` (bootstraps a language)
+    - `package NAME` (bootstraps a package)
 - `version`  (version of the JDT)
 - `build` (creates zip file for deployment, with timestamp)
 - `release` (creates zip file for deployment)
 - `bump` (increments either --patch, --minor or --major version, --patch is default)
 - `clean` (removes the `/zip` and the `/.jdt` directories)
 - `deploy` (installs the extension via web at an active Joomla! instance)
-- `xampp` (xampp specific functionality with several subcommands)
+- `undeploy` (removes the extension via weg from an active Joomla! instance)
+- `xampp <commands>` (xampp specific functionality with several subcommands)
     - `web` (open the Extension in Browser)
     - `phpMyAdmin` (opens phpMyAdmin in Browser)
     - `php_ini` (shows php.ini on console)
 
 (NOT YET IMPLEMENTED)
 
-- `install` (installs the extension at a Joomla! instance)
-- `uninstall` (uninstalls the extension from a Joomla! instance)
+- `generate` (create models, controllers, views with default data)
+    - `controller` (create controller)
+    - `model` (create model)
+    - `view` (create view)
+    - `language` (create language files)
+    - `scaffold` (create controllers, models and views)
 - `install-jdump` (installs JDump at a Joomla! instance)
 - `uninstall-jdump` (uninstall JDump from a Joomla! instance)
 - `sync` (copy the files to a local Joomla! installation, once or continously)
-- `scaffold` (create models, controllers, views with default data)
 - `test` (executes unit and integration tests)
-
-- open PHP.ini, open other config files, etc.
 
 # FAQ
 
@@ -67,15 +76,15 @@ The tool is then useable in the command line with `$> jdt`
 
 The source code is solely available via [github](http://github.com)
 
-    `git clone https://www.github.com/simonharrer/joomlatools.git`
+    git clone https://www.github.com/simonharrer/joomlatools.git
 
 ## Required gems for development in general (making life easier)
 
 Install the following gems: [ZenTest](https://github.com/seattlerb/zentest), [gem-release](https://github.com/svenfuchs/gem-release), [bundler](http://gembundler.com/)
 
-    * `gem install ZenTest`
-    * `gem install gem-release`
-    * `gem install bundle`
+  * `gem install ZenTest`
+  * `gem install gem-release`
+  * `gem install bundle`
 
 ## Required gems for JDT development
 
@@ -85,10 +94,10 @@ Execute `bundle` (installs all required gems defined by the gem specification)
 
 Solution:
 
-    * Download and extract [DevKit](http://rubyinstaller.org/downloads/) to an arbitrary folder
-    * Open `devkit_folder/msys.bat`
-    * Change the directory to the JDT directory
-    * Execute `bundle` which builds the native code for your system
+ * Download and extract [DevKit](http://rubyinstaller.org/downloads/) to an arbitrary folder
+ * Open `devkit_folder/msys.bat`
+ * Change the directory to the JDT directory
+ * Execute `bundle` which builds the native code for your system
 
 ## Installing locally
 
