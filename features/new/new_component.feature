@@ -2,7 +2,6 @@ Feature: new component
 
   Generation data specific for generation a component.
 
-  @wip
   Scenario: Create new component with name test
     When I successfully run `jdt.bat new component test`
     Then the following directories should exist:

@@ -1,4 +1,5 @@
 require 'zip/zip'
+require 'tempfile'
 
 module Jdt
 
@@ -121,34 +122,26 @@ module Jdt
       end
     end
 
+    public
+
     def add_index_html_to_every_dir(zos)
-      # TODO add a index.html file containing only the line <html><body bgcolor="#FFFFFF"></body></html> at every directory within the zip file
-    end
 
-  end
+      # add in root dir
+      zos.add("index.html", index_file)
 
-  class IndexCreater
-    include Thor::Actions
-
-    def initialize (path)
-      @path = path
-    end
-
-    def create_index
-      create_index_recursive(@path)
-    end
-
-    private
-
-    def create_index_recursive (path)
-      template('/templates/component/index.html.erb', "#{path}/index.html")
-      Dir.chdir("#{path}") do
-        Dir.glob("*").each do |dir|
-          if File.directory?(dir)
-            create_index_recursive("#{path}/#{dir}")
-          end
+      # in all sub dirs
+      zos.each do |entry|
+        puts "ENTRY: #{entry}"
+        if entry.file? and entry.parent_as_string
+          puts "DIR: #{entry.parent_as_string}"
+          zos.add("#{entry.parent_as_string}index.html", index_file)
         end
       end
+
+    end
+
+    def index_file
+      "#{File.expand_path(File.dirname(__FILE__))}/resources/index.html"
     end
 
   end
