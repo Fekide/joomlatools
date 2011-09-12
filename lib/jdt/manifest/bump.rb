@@ -4,6 +4,7 @@ module Jdt
 
   class Manifest
 
+    # <major>.<minor>.<patch>
     def bump!(type)
       new_version = bump_version(type, version)
       @doc.at_css("extension > version").content = new_version
