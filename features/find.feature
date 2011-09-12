@@ -1,4 +1,3 @@
-@wip
 Feature: find the manifest file
 
   Scenario Outline: Not within an extension

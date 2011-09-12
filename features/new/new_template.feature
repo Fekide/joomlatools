@@ -2,7 +2,6 @@ Feature: new template
 
   Generation data specific for generation a template.
 
-  @wip
   Scenario: Create new template with name test
     When I successfully run `jdt.bat new template test`
     Then the following directories should exist:
