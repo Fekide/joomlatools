@@ -9,6 +9,7 @@ module Jdt
     end
 
     def to_specific
+      # TODO extend it for different manifests for each extension type
       if (ext_type == "library")
         LibraryManifest.new(file)
       else

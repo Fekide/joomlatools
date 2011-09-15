@@ -11,17 +11,11 @@ module Jdt
     end
 
     def errors
-      if(not @errors)
-        @errors = []
-      end
-      @errors
+      @errors ||= []
     end
 
     def warnings
-      if(not @warnings)
-        @warnings = []
-      end
-      @warnings
+      @warnings ||= []
     end
 
     private
@@ -41,6 +35,7 @@ module Jdt
 
     SCHEMAS_FOLDER = "#{File.dirname(__FILE__)}/schemas"
 
+    # TODO create schemas for all different extensions and check that the validation works as expected
     SCHEMAS = {:manifest => "#{SCHEMAS_FOLDER}/manifest.xsd",
                :library => "#{SCHEMAS_FOLDER}/library.xsd",
                :plugin => "#{SCHEMAS_FOLDER}/plugin.xsd",

@@ -3,7 +3,7 @@ require "nokogiri"
 module Jdt
 
   class ElementNotFoundError < RuntimeError
-
+    # TODO handle the part, when the element has not been found as it was optional, how is this handled by the accessors of the attributes?
   end
 
   class Manifest

@@ -14,24 +14,26 @@ module Jdt
     private
 
     def update_file_with_doc
-      File.open(file,"w") do |f|
+      File.open(file, "w") do |f|
         f.write(@doc.to_xml)
       end
     end
 
     def bump_version(type, version)
       new_version = version.split(".").map { |item| item.to_i }
-      if (type == :patch)
-        new_version[2] = new_version[2] + 1
-      elsif (type == :minor)
-        new_version[1] = new_version[1] + 1
-        new_version[2] = 0
-      elsif (type == :major)
-        new_version[0] = new_version[0] + 1
-        new_version[1] = 0
-        new_version[2] = 0
-      else
-        raise RuntimeError("given type (#{type})not found")
+
+      case type
+        when :patch
+          new_version[2] = new_version[2] + 1
+        when :minor
+          new_version[1] = new_version[1] + 1
+          new_version[2] = 0
+        when :major
+          new_version[0] = new_version[0] + 1
+          new_version[1] = 0
+          new_version[2] = 0
+        else
+          raise RuntimeError("given type (#{type})not found")
       end
       new_version.join(".")
     end

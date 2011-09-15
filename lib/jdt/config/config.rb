@@ -31,12 +31,7 @@ module Jdt
     end
 
     def yaml_props
-      props = YAML.load_file(yaml_file)
-      if (props)
-        props
-      else
-        Hash.new
-      end
+      YAML.load_file(yaml_file) ||= Hash.new
     end
 
     def update
