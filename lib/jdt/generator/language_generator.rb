@@ -5,6 +5,8 @@ module Jdt
     def generate(name)
       super
 
+      template('templates/language/manifest.xml.erb', "#{folder}/manifest.xml")
+
     end
 
     no_tasks {

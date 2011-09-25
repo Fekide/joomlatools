@@ -23,11 +23,11 @@ module Jdt
       @location = "."
 
       # create directory and files which every extension needs
-      empty_directory(prefixed_name)
-      template("README.erb", "#{prefixed_name}/README")
-      #template("LICENSE.erb", "#{prefixed_name}/LICENSE")
-      template("CHANGELOG.erb", "#{prefixed_name}/CHANGELOG")
-      template("manifest.xml.erb", "#{prefixed_name}/manifest.xml")
+      empty_directory(folder)
+      template("templates/README.erb", "#{folder}/README")
+      template("templates/LICENSE.erb", "#{folder}/LICENSE")
+      template("templates/CHANGELOG.erb", "#{folder}/CHANGELOG")
+      template("templates/script.php.erb", "#{folder}/script.php")
     end
 
 
@@ -46,6 +46,10 @@ module Jdt
 
       def folder
         "#{location}/#{prefixed_name}"
+      end
+
+      def self.source_root
+        File.dirname(__FILE__)
       end
     }
   end

@@ -5,7 +5,7 @@ module Jdt
     def generate(name)
       super
 
-      empty_directory("#{folder}")
+      #empty_directory("#{folder}")
       template('templates/component/manifest.xml.erb', "#{folder}/manifest.xml")
       template('templates/component/script.php.erb', "#{folder}/script.php")
 
@@ -74,6 +74,8 @@ module Jdt
       def type_short
         "com"
       end
+
+
     }
   end
 
