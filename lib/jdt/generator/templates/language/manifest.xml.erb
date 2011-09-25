@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="language" version="1.7.0" method="upgrade">
+
+	<name><%= @name %></name>
+	<version><%= @version %></version>
+
+	<creationDate><%= @creation_date %></creationDate>
+	<homepage>https://www.github.com/simonharrer/activerecord</homepage>
+	<description><%= @description %></description>
+	
+	<!-- optional attributes
+	<author><%= @author %></author>
+	<authorEmail>email.to@author.com</authorEmail>
+    <authorUrl>http://www.url.to/author</authorUrl>
+
+    <license>LICENSE</license>
+    <copyright>COPYRIGHT</copyright>
+    -->
+
+    <!-- Library specific attributes -->
+	<libraryname><%= @libraryname %></libraryname>
+
+    <!-- Copy Section -->
+    <files>
+        <filename><%= @name %>.php</filename>
+        <filename>README</filename>
+        <filename>CHANGELOG</filename>
+        <folder>lang</folder>
+    </files>
+
+
+</extension>

@@ -9,7 +9,7 @@ module Jdt
       empty_directory("#{folder}/tmpl")
 
       # create files
-      template("templates/module/manifest.xml.erb", "#{folder}/#{prefixed_name}.xml")
+      template("templates/module/manifest.xml.erb", "#{folder}/manifest.xml")
       template("templates/module/mod_name.php.erb", "#{folder}/#{prefixed_name}.php")
       template("templates/module/helper.php.erb", "#{folder}/helper.php")
       template("templates/module/tmpl/default.php.erb", "#{folder}/tmpl/default.php")

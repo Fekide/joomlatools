@@ -5,6 +5,8 @@ module Jdt
     def generate(name)
       super
 
+      template('templates/template/manifest.xml.erb', "#{folder}/manifest.xml")
+
       # site or admin is important
 
       #create empty directory

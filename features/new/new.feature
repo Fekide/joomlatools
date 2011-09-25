@@ -1,5 +1,6 @@
 Feature: new extension
 
+  @announce
   Scenario Outline: every new command should generate files and folders
     When I successfully run `jdt.bat new <type> test`
     Then the following directories should exist:
