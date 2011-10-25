@@ -1,6 +1,8 @@
 # Abstract
 The **Joomla Development Tool** (short: **jdt**) is a command line tool to easen the development of extensions for [Joomla! CMS](http://www.joomla.org/). It tries to bring the command line facilities of other famous web frameworks like [Rails](http://rubyonrails.org/) to [Joomla!](http://www.joomla.org/).
 
+And it really IS cool!
+
 # Features
 
 - `status` (shows the current extension type, name, version, author, etc.)
