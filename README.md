@@ -71,7 +71,7 @@ The tool is then useable in the command line with `$> jdt`
 
 ## Prerequisites
 
-* [Ruby 1.9.2] (http://www.ruby-lang.org)
+* [Ruby 1.9.3](http://www.ruby-lang.org)
 * [RubyGems](https://rubygems.org/) newest version installed with (`gem update --system`)
 
 ## Source code
